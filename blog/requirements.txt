@@ -1,0 +1,7 @@
+fastapi
+pydantic
+sqlalchemy
+passlib
+argon2_cffi
+python-jose
+python-multipart

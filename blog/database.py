@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # database file inside blog/
-DB_PATH = os.path.join(BASE_DIR, "blob.db")
+DB_PATH = os.path.join(BASE_DIR, "blog.db")
 
 # database url
 DATABASE_URL = f"sqlite:///{DB_PATH}"
@@ -23,3 +23,11 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 # declare mapping (create Base)
 Base = declarative_base()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
